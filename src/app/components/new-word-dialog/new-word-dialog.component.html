@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Add new word</h1>
+<div mat-dialog-content>
+  <p>What's the word you would like to add?</p>
+  <mat-form-field>
+    <mat-label>Word</mat-label>
+    <input matInput [(ngModel)]="data.word" /> </mat-form-field
+  ><br />
+  <mat-form-field>
+    <mat-label>Translation</mat-label>
+    <input matInput [(ngModel)]="data.translation" />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>
+    Save
+  </button>
+</div>
