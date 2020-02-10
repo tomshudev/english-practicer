@@ -1,1 +1,28 @@
-<p>test works!</p>
+<mat-horizontal-stepper
+  [linear]="true"
+  labelPosition="bottom"
+  [disableRipple]="true"
+  [@.disabled]="true"
+  #stepper
+  (selectionChange)="currStep = currStep + 1"
+>
+  <mat-step
+    *ngFor="let question of questions; let i = index"
+    [stepControl]="questionFormGroup"
+    [editable]="false"
+  >
+    <app-question
+      *ngIf="i == currStep"
+      [question]="questions[i]"
+      (finishedQuestion)="finishedQuestion($event)"
+    ></app-question>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done. Score: {{ score }}</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
