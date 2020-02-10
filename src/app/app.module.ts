@@ -6,9 +6,12 @@ import { MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatFormFieldModule } from "@angular/material/form-field";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatInputModule } from "@angular/material";
 import { MatSortModule } from "@angular/material/sort";
+import { MatStepperModule } from "@angular/material/stepper";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatRadioModule } from "@angular/material/radio";
 
 import { AppComponent } from "./containers/app/app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -16,6 +19,8 @@ import { DictionaryComponent } from "./containers/dictionary/dictionary.componen
 import { TestComponent } from "./containers/test/test.component";
 import { NewWordDialog } from "./components/new-word-dialog/new-word-dialog.component";
 import { ValidateRemoveDialog } from "./components/validate-remove-dialog/validate-remove-dialog.component";
+import { TimerComponent } from "./components/timer/timer.component";
+import { QuestionComponent } from "./components/question/question.component";
 
 @NgModule({
   declarations: [
@@ -23,7 +28,9 @@ import { ValidateRemoveDialog } from "./components/validate-remove-dialog/valida
     DictionaryComponent,
     TestComponent,
     NewWordDialog,
-    ValidateRemoveDialog
+    ValidateRemoveDialog,
+    TimerComponent,
+    QuestionComponent
   ],
   imports: [
     BrowserModule,
@@ -35,8 +42,12 @@ import { ValidateRemoveDialog } from "./components/validate-remove-dialog/valida
     MatDialogModule,
     MatFormFieldModule,
     FormsModule,
+    ReactiveFormsModule,
     MatInputModule,
-    MatSortModule
+    MatSortModule,
+    MatStepperModule,
+    MatSnackBarModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent],
