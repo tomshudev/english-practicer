@@ -1,0 +1,20 @@
+<h1>What is the translation of the word {{ question.word }}?</h1>
+
+<mat-radio-group
+  aria-labelledby="example-radio-group-label"
+  class="question__answers"
+  [(ngModel)]="selectedAnswer"
+>
+  <mat-radio-button
+    class="question__answers--answer"
+    *ngFor="let answer of question.answers; let i = index"
+    [value]="i"
+  >
+    {{ answer }}
+  </mat-radio-button>
+</mat-radio-group>
+
+<div>Your favorite season is: {{ selectedAnswer }}</div>
+
+<app-timer (timerDone)="timerUp()"></app-timer>
+<button mat-button (click)="nextQuestion()">Next</button>
