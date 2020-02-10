@@ -2,9 +2,9 @@ import { Injectable } from "@angular/core";
 import { WordsService, Word } from "./words.service";
 import { tap } from "rxjs/operators";
 
-interface Question {
+export interface Question {
   word: string;
-  ansewrs: string[];
+  answers: string[];
   correctIndex: number;
 }
 
@@ -49,7 +49,7 @@ export class TestService {
 
       test.push({
         word: currWord.word,
-        ansewrs: answers,
+        answers: answers,
         correctIndex: correctAnswerIndex
       });
     });
