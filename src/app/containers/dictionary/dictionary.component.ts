@@ -46,7 +46,9 @@ export class DictionaryComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.wordsService.addNewWord(result);
+      if (result) {
+        this.wordsService.addNewWord(result);
+      }
     });
   }
 

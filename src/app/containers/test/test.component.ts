@@ -25,4 +25,10 @@ export class TestComponent implements OnInit {
     this.score += isCorrectAnswer ? 1 : 0;
     this.stepper.next();
   }
+
+  startNewTest() {
+    this.questions = this.testService.generateNewTest();
+    this.currStep = -1;
+    this.stepper.reset();
+  }
 }

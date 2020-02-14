@@ -14,7 +14,9 @@
   </mat-radio-button>
 </mat-radio-group>
 
-<div>Your favorite season is: {{ selectedAnswer }}</div>
-
-<app-timer (timerDone)="timerUp()"></app-timer>
-<button mat-button (click)="nextQuestion()">Next</button>
+<div class="bottom">
+  <app-timer (timerDone)="timerUp()"></app-timer>
+  <button mat-raised-button (click)="nextQuestion()" color="accent">
+    Next
+  </button>
+</div>

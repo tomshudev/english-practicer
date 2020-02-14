@@ -26,6 +26,11 @@ export class TestService {
 
   constructor(private wordsService: WordsService) {}
 
+  generateNewTest() {
+    this.generateTest(this.wordsService.words);
+    return this.currentTest;
+  }
+
   generateTest(words: Word[]) {
     let test: Question[] = [];
     let shuffledWords = this.shuffle(words).slice(0, 10);

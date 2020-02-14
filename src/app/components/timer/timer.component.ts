@@ -21,6 +21,7 @@ export class TimerComponent implements OnInit {
 
   amount: number = 60;
   currentTime: string = "01:00";
+  color: string = "#61d4b3";
 
   constructor() {}
 
@@ -33,6 +34,7 @@ export class TimerComponent implements OnInit {
     )
     .subscribe({
       next: t => {
+        this.color = t > 30 ? "#61d4b3" : t > 10 ? "#fdd365" : "#fb8d62";
         this.currentTime = t === 60 ? "01:00" : `00:${t < 10 ? "0" + t : t}`;
       },
       complete: () => this.timerDone.emit(true)

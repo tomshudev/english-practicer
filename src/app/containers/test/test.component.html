@@ -6,23 +6,48 @@
   #stepper
   (selectionChange)="currStep = currStep + 1"
 >
+  <mat-step>
+    <div class="test__prompts">
+      <ng-template matStepLabel>Start</ng-template>
+      <h1>Are you ready to a brand new test??</h1>
+      <div>
+        <button
+          class="test__button"
+          mat-raised-button
+          (click)="stepper.next()"
+          color="accent"
+        >
+          Start
+        </button>
+      </div>
+    </div>
+  </mat-step>
   <mat-step
     *ngFor="let question of questions; let i = index"
     [stepControl]="questionFormGroup"
     [editable]="false"
   >
+    {{ i }} {{ currStep }}
     <app-question
-      *ngIf="i == currStep"
+      *ngIf="i + 1 == currStep"
       [question]="questions[i]"
       (finishedQuestion)="finishedQuestion($event)"
     ></app-question>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done. Score: {{ score }}</p>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
+    <div class="test__prompts">
+      <ng-template matStepLabel>Done</ng-template>
+      <h1>You are now done. Score: {{ score }}</h1>
+      <div>
+        <button
+          class="test__button"
+          mat-raised-button
+          (click)="startNewTest()"
+          color="accent"
+        >
+          Start new test
+        </button>
+      </div>
     </div>
   </mat-step>
 </mat-horizontal-stepper>
