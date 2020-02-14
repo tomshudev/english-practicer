@@ -3,6 +3,7 @@
   dynamicHeight
   animationDuration="0ms"
   class="app"
+  (selectedIndexChange)="handleTestGeneration($event)"
 >
   <mat-tab label="Your Dictionary"><app-dictionary></app-dictionary></mat-tab>
   <mat-tab label="Test Yourself"><app-test></app-test></mat-tab>

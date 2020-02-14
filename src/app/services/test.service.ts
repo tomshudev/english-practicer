@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { WordsService, Word } from "./words.service";
 import { tap } from "rxjs/operators";
+import { Subject, BehaviorSubject } from "rxjs";
 
 export interface Question {
   word: string;
@@ -14,15 +15,7 @@ export interface Question {
 export class TestService {
   currentTest: Question[];
 
-  wordsData = this.wordsService.wordsSubject
-    .pipe(
-      tap(words => {
-        if (words) {
-          this.generateTest(words);
-        }
-      })
-    )
-    .subscribe();
+  nextTest = new BehaviorSubject<Question[]>([]);
 
   constructor(private wordsService: WordsService) {}
 
@@ -32,7 +25,7 @@ export class TestService {
   }
 
   generateTest(words: Word[]) {
-    if (words.length < 3) {
+    if (words.length < 4) {
       this.currentTest = [];
     } else {
       let test: Question[] = [];

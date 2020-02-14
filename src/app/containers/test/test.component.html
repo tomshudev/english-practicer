@@ -28,7 +28,6 @@
     [stepControl]="questionFormGroup"
     [editable]="false"
   >
-    {{ i }} {{ currStep }}
     <app-question
       *ngIf="i + 1 == currStep"
       [question]="questions[i]"

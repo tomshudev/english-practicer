@@ -17,7 +17,12 @@ export class TestComponent implements OnInit {
 
   @ViewChild(MatStepper, { static: false }) stepper: MatStepper;
 
-  constructor(private testService: TestService) {}
+  constructor(private testService: TestService) {
+    this.testService.nextTest.subscribe(nextTest => {
+      this.questions = nextTest;
+      this.currStep = 0;
+    });
+  }
 
   ngOnInit() {}
 
