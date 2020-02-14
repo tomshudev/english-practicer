@@ -1,4 +1,5 @@
 <mat-horizontal-stepper
+  *ngIf="questions.length > 0"
   [linear]="true"
   labelPosition="bottom"
   [disableRipple]="true"
@@ -51,3 +52,7 @@
     </div>
   </mat-step>
 </mat-horizontal-stepper>
+
+<h1 *ngIf="questions.length === 0">
+  There are not enough words in your dictionary
+</h1>

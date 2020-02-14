@@ -32,35 +32,38 @@ export class TestService {
   }
 
   generateTest(words: Word[]) {
-    let test: Question[] = [];
-    let shuffledWords = this.shuffle(words).slice(0, 10);
+    if (words.length < 3) {
+      this.currentTest = [];
+    } else {
+      let test: Question[] = [];
+      let shuffledWords = this.shuffle(words).slice(0, 10);
 
-    shuffledWords.forEach(currWord => {
-      let answers: string[] = [];
-      let answersOptions = shuffledWords.filter(
-        word => word.id !== currWord.id
-      );
-      for (let curr = 0; curr < 3; curr++) {
-        let selectedIndex = Math.floor(Math.random() * answersOptions.length);
-        answers.push(answersOptions[selectedIndex].translation);
-        answersOptions.splice(selectedIndex, 1);
-      }
-      answers.push(`[correct]${currWord.translation}`);
-      answers = this.shuffle(answers);
-      let correctAnswerIndex = answers.findIndex((answer: string) =>
-        answer.startsWith("[correct]")
-      );
-      answers[correctAnswerIndex] = currWord.translation;
+      shuffledWords.forEach(currWord => {
+        let answers: string[] = [];
+        let answersOptions = shuffledWords.filter(
+          word => word.id !== currWord.id
+        );
+        for (let curr = 0; curr < 3; curr++) {
+          let selectedIndex = Math.floor(Math.random() * answersOptions.length);
+          answers.push(answersOptions[selectedIndex].translation);
+          answersOptions.splice(selectedIndex, 1);
+        }
+        answers.push(`[correct]${currWord.translation}`);
+        answers = this.shuffle(answers);
+        let correctAnswerIndex = answers.findIndex((answer: string) =>
+          answer.startsWith("[correct]")
+        );
+        answers[correctAnswerIndex] = currWord.translation;
 
-      test.push({
-        word: currWord.word,
-        answers: answers,
-        correctIndex: correctAnswerIndex
+        test.push({
+          word: currWord.word,
+          answers: answers,
+          correctIndex: correctAnswerIndex
+        });
       });
-    });
 
-    console.log(test);
-    this.currentTest = test;
+      this.currentTest = test;
+    }
   }
 
   private shuffle(words: any[]): any[] {
