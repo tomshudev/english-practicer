@@ -21,6 +21,7 @@ export class TestComponent implements OnInit {
     this.testService.nextTest.subscribe(nextTest => {
       this.questions = nextTest;
       this.currStep = 0;
+      this.score = 0;
     });
   }
 
